@@ -133,5 +133,16 @@ body {
   font-size: smaller;
 }
 
+.image-container {
+  display: flex;
+  justify-content: space-between;
+  /* Optional: Add some padding or border to ensure they don't stick together */
+  gap: 10px; /* gap property can be used to provide spacing between flex children */
+}
 
+.image-container img {
+  /* This ensures that each image takes up half the container's width minus the gap, and auto resizes */
+  width: calc(50% - 5px); /* subtract half of the gap to ensure they fit side by side */
+  height: auto; /* maintain the aspect ratio */
+}
 
