@@ -112,15 +112,16 @@
               </span>
 
               <!-- Supplementary PDF link -->
-                    <span class="link-block">
-                      <a href="https://minnesotanlp.github.io/cobbler/" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fa fa-laptop"></i>
-                      </span>
-                      <span>Demo</span>
-                    </a>
+              <span class="link-block">
+                  <a href="https://minnesotanlp.github.io/cobbler/" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa fa-laptop"></i>
                   </span>
+                  <span>Link to Demo & Data</span>
+                </a>
+              </span>
+              
             </div>
           </div>
         </div>
@@ -186,7 +187,7 @@
           <div class="content has-text-justified">
             <br>
             <p>
-            We propose COBBLER, the <b>CO</b>gnitive <b>B</b>ias <b>B</b>enchmark for evaluating the quality and reliability of <b>L</b>LMs as <b>E</b>valuato<b>R</b>s. Here is the pipeline: 
+            We propose CoBBLEr, the <b>CO</b>gnitive <b>B</b>ias <b>B</b>enchmark for evaluating the quality and reliability of <b>L</b>LMs as <b>E</b>valuato<b>R</b>s. Here is the pipeline: 
             <ol>
               <li> 
                 <b style="color: slateblue">Dataset and Models </b> 
@@ -226,7 +227,7 @@
         <div class="column is-four-fifths">
           <br>
           <div class="columns is-centered has-text-centered;">
-            <h1 class="title is-3">(1)</h1>
+            <h1 class="title is-3">(1) Definition of Biases in CoBBLEr</h1>
           </div> 
           <div class="item">
             <br>
@@ -246,7 +247,7 @@
           </div>
           <br>
           <div class="columns is-centered has-text-centered;">
-            <h1 class="title is-3">(2)</h1>
+            <h1 class="title is-3">(2) Overall Bias Scores by Models and Size</h1>
           </div> 
           <div class="item">
             <br>
@@ -260,27 +261,55 @@
             <p>We show proportion of responses that were labeled bias for each bias benchmark. We visualize the distribution of the 15 models tested that varies by the y-axis. 
               The red dashed line indicates the RANDOM threshold for each bias benchmark that serves as a litmus between biased and unbiased LMs-as-evaluators. 
               The spread on the x-axis is randomly distributed for visual clarity.</p>
+            <ol>
+              <li>Order Bias: the majority of models tend to prefer the first-order response, especially the models of size greater than 40B parameters. </li>
+              <li>Compassion Bias: all models were influenced by real model names in evaluation settings, especially for those with 100B parameters or greater.</li>
+              <li>Egocentric Bias: The models of size less than than 10B generally tend to prefer their own responses regardless of text quality, compared to anonymized aliases. </li>
+              <li>Salience Bias: Larger models (>100B and >40B) are drawn more strongly to longer responses, compared to smaller models.</li>
+              <li>Bandwagon Effect: The majority of models were heavily influenced by a simple fake statistics, regardless of text quality. </li>
+              <li>Attentional Bias: Around half of models were influenced by irrelevant information that distracts models when evaluating text quality.</li>
+            </ol>
           </div>
+        </div>
+        </div>
+        <!-- <br>
+        <div class="columns is-centered has-text-centered;">
+          <h1 class="title is-3">(3)</h1>
+        </div> 
+        <div class="image-container">
+          <img src="static/images/intensity-polygon.jpg" alt="Image 1">
+          <img src="static/images/mainplot.jpg" alt="Image 2">
+        </div>
+        <div class="content has-text-justified">
           <br>
-          <div class="columns is-centered has-text-centered;">
-            <h1 class="title is-3">(3)</h1>
-          </div> 
-          <div class="image-container">
-            <img src="static/images/intensity-polygon.jpg" alt="Image 1">
-            <img src="static/images/mainplot.jpg" alt="Image 2">
-          </div>
-          <div class="content has-text-justified">
-            <br>
-            <p>(Left) We show the proportion of biased responses for each evaluator relative to the random threshold. We scale each of the axes to the score of the most biased model.  
-            </p>
-            <p>(Right) Overview of performance across all of the bias benchmarks categorized into 4 size groups.  
-              The red-dotted line denotes the average threshold taken from the calculated
-              RANDOM in which the average scores were taken by summing their bias scores and then
-              taking their average.</p>
-          </div>          
-        </div>
-        </div>
+          <p>(Left) We show the proportion of biased responses for each evaluator relative to the random threshold. We scale each of the axes to the score of the most biased model.
+            The polygon plot indicates that the majority of models strongly exhibit several of the different biases, which could compromise the credibility of them as evaluators. 
+          </p>
+          <p>(Right) Overview of performance across all of the bias benchmarks categorized into 4 size groups.  
+            The red-dotted line denotes the average threshold taken from the calculated RANDOM in which the average scores were taken by summing their bias scores and then
+            taking their average. 
+            The plot shows that the induced biases (Bandwagon effect and Attentional Bias) contribute to almost half of their average bias score. 
+            Also, the implicit biases contribute similarly to each model's overall bias scores, so scaling up model size does not reduce the biases in LLM evaluators. </p>
+        </div> -->
       </div>
+      <br>
+      <div class="columns is-centered has-text-centered;">
+      </div> 
+      <div class="image-container">
+        <img src="static/images/intensity-polygon.jpg" alt="Image 1">
+        <img src="static/images/mainplot.jpg" alt="Image 2">
+      </div>
+      <div class="content has-text-justified">
+        <br>
+        <p>(Left) We show the proportion of biased responses for each evaluator relative to the random threshold. We scale each of the axes to the score of the most biased model.
+          The polygon plot indicates that the majority of models strongly exhibit several of the different biases, which could compromise the credibility of them as evaluators. 
+        </p>
+        <p>(Right) Overview of performance across all of the bias benchmarks categorized into 4 size groups.  
+          The red-dotted line denotes the average threshold taken from the calculated RANDOM in which the average scores were taken by summing their bias scores and then
+          taking their average. 
+          The plot shows that the induced biases (Bandwagon effect and Attentional Bias) contribute to almost half of their average bias score. 
+          Also, the implicit biases contribute similarly to each model's overall bias scores, so scaling up model size does not reduce the biases in LLM evaluators. </p>
+      </div>     
     </div>
   </div>
 </section>
@@ -447,14 +476,36 @@
           <p>
             This page template is borrowed from <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">here</a>.
             <!-- This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page. -->
-            <!-- You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>. -->
+            <!-- You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br>  -->
+            This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
         </div>
       </div>
     </div>
   </div>
 </footer>
+  <!-- <script>
+    // JavaScript to handle the button click event
+    var downloadLink = document.getElementById('downloadLink');
+    downloadLink.addEventListener('click', function (e) {
+        // Prevent the default behavior of the link (opening in a new tab)
+        e.preventDefault();
+
+        // Replace 'YOUR_JSON_FILE_URL' with the actual URL of your JSON file on GitHub
+        var jsonFileUrl = 'https://mimn97.github.io/cobbler-webpage/data.json';
+
+        // Create an anchor element for downloading
+        var link = document.createElement('a');
+        link.href = jsonFileUrl;
+
+        // Set the download attribute to specify the file name
+        link.download = 'your_file.json';
+
+        // Simulate a click event to trigger the download
+        link.click();
+    });
+  </script> -->
 
 <!-- Statcounter tracking code -->
   
